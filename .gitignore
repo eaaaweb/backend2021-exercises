@@ -340,3 +340,9 @@ _Lesson10_MbmStore_startup/
 _Lesson09_MbmStore_solution/
 _Lesson10_MbmStore_solution/
 *.zip
+_Lesson05/
+Lesson02_MbmStore_solution/
+Lesson03_MbmStore_mandatory_solution/MbmStore/MbmStore.csproj
+Lesson03_MbmStore_mandatory_solution/MbmStore/appsettings.Development.json
+Lesson03_MbmStore_mandatory_solution/
+Lesson05_MbmStore_solution/
