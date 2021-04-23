@@ -29,7 +29,7 @@ namespace Lesson05.Controllers
                 SelectListItem selectListItem = new SelectListItem { Text = item.Name, Value = item.CountryCode };
 
                 // if there is a country parameter in the URL
-                // the the eleent in the countries List has the same country code value as the country parameter
+                // the element in the countries List has the same country code value as the country parameter
                 if (!String.IsNullOrEmpty(country) && item.CountryCode == country)
                 {
                     selectListItem.Selected = true;
