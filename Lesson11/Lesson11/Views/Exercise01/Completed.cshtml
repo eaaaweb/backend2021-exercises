@@ -1,0 +1,13 @@
+﻿@model lesson11.Models.User
+
+@{
+    ViewBag.Title = "Exercise 1";
+}
+
+<h2>Registration completed</h2>
+<p>You are now registred as active user:</p>
+<p>
+    <span class="label">Name:</span> @Html.DisplayFor(m => m.Fullname)<br />
+    <span class ="label">Username:</span> @Html.DisplayFor(m => m.Username)<br />
+        <span class="label">Age:</span> @Html.DisplayFor(m => m.Age)
+</p>
