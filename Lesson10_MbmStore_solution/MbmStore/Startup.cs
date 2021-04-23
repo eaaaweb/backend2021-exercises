@@ -30,6 +30,7 @@ namespace MbmStore
             services.AddSession();
             services.AddDbContext<MbmStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MbmStoreContext")));
             services.AddScoped<IBookRepository, EFBookRepository>();
+            services.AddScoped<IInvoiceRepository, EFInvoiceRepository>();
 
         }
 

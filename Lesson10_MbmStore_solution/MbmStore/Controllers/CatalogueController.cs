@@ -25,19 +25,19 @@ namespace MbmStore.Controllers
         public ActionResult Index(string category, int page = 1)
         {
 
-            // Queries to include tracks
-            IEnumerable<Product> music = dataContext.Products.OfType<MusicCD>().Include(m => m.Tracks);
-            IEnumerable<Product> books = dataContext.Products.OfType<Book>();
-            IEnumerable<Product> movies = dataContext.Products.OfType<Movie>();
-
-            IEnumerable<Product> products = music.Union(books).Union(movies).ToList();
-                
+            // Use this if you want the query to include tracks from MusicCd
+            /**
+                IEnumerable<Product> music = dataContext.Products.OfType<MusicCD>().Include(m => m.Tracks);
+                IEnumerable<Product> books = dataContext.Products.OfType<Book>();
+                IEnumerable<Product> movies = dataContext.Products.OfType<Movie>();
+                IEnumerable<Product> products = music.Union(books).Union(movies).ToList();
+            **/ 
                 
 
             ProductsListViewModel model = new ProductsListViewModel();
             model = new ProductsListViewModel
             {
-                Products = products
+                Products = dataContext.Products
                 .OrderBy(p => p.ProductId)
                 .Where(p => category == null || p.Category == category)
                 .Skip((page - 1) * PageSize)
