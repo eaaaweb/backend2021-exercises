@@ -11,7 +11,7 @@ namespace MbmStore.Models {
         public string Label { get; set; }
         public short Released { get; set; }
 
-        public List<Track> Tracks { get; } = new List<Track>();
+        public virtual ICollection<Track> Tracks { get; } = new List<Track>();
 
         public void AddTrack(Track track) {
             Tracks.Add(track);

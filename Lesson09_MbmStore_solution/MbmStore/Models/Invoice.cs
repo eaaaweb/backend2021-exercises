@@ -29,7 +29,7 @@ namespace MbmStore.Models
         public Customer Customer { get; set; }
 
 
-        public List<OrderItem> OrderItems { get; } = new List<OrderItem>();
+        public virtual ICollection<OrderItem> OrderItems { get; } = new List<OrderItem>();
 
         public Invoice() { }
 
