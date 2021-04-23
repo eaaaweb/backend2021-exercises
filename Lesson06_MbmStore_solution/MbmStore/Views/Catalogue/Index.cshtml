@@ -1,0 +1,135 @@
+﻿@using MbmStore.Models;
+@using MbmStore.Infrastructure;
+@model IEnumerable<Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>MbmStore Catalogue</title>
+</head>
+
+
+
+<body>
+    <h2>The Books</h2>
+    <table>
+        @foreach (Book book in Model.OfType<Book>().ToList())
+        {
+            <tr>
+                <td valign="top">
+                    <img src="Images/@book.ImageUrl" alt="@book.Title" style="width:100px" />
+                </td>
+                <td valign="top" style="width:250px">
+                    <div>
+                        <strong>Title:</strong> @book.Title<br />
+                        <strong>Author:</strong> @book.Author<br />
+                        <strong>Price:</strong> @book.Price<br />
+                        <strong>Publisher:</strong> @book.Publisher (@book.Published)<br />
+                        <strong>ISBN:</strong> @book.ISBN<br /> <br />
+                    </div>
+                </td>
+                <td style="vertical-align:bottom;padding-left:50px;">
+                    <div>
+                        <form id="@book.ProductID" asp-action="AddToCart" asp-controller="Cart" method="post">
+                            <input type="hidden" name="ProductID" value="@book.ProductID" />
+                            <input type="hidden" name="returnUrl"
+                                   value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                            <span class="card-text p-1">
+                                <button type="submit"
+                                        class="btn btn-success btn-sm pull-right" style="float:right">
+                                    Add To Cart
+                                </button>
+                            </span>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+
+
+    <br />
+    <br />
+
+    <h2>The Music CDs</h2>
+    <table>
+        @foreach (MusicCD cd in Model.OfType<MusicCD>().ToList())
+        {
+            <tr>
+                <td valign="top">
+                    <img src="Images/@cd.ImageUrl" alt="@cd.Title" style="width:100px" />
+                </td>
+                <td valign="top" style="width:250px">
+                    <div>
+                        <strong>Album:</strong> @cd.Title<br />
+                        <strong>Artist:</strong> @cd.Artist<br />
+                        <strong>Price:</strong> @cd.Price<br />
+                        <strong>Publisher:</strong> @cd.Label (@cd.Released)<br /> <br />
+                    </div>
+                    
+                </td>
+                <td style="vertical-align:bottom;padding-left:50px;">
+                    <div>
+                        <form id="@cd.ProductID" asp-action="AddToCart" asp-controller="Cart" method="post">
+                            <input type="hidden" name="ProductID" value="@cd.ProductID" />
+                            <input type="hidden" name="returnUrl"
+                                   value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                            <span class="card-text p-1">
+                                <button type="submit"
+                                        class="btn btn-success btn-sm pull-right" style="float:right">
+                                    Add To Cart
+                                </button>
+                            </span>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+
+        }
+    </table>
+
+        <br />
+        <br />
+
+        <h2>The Movies</h2>
+        <table>
+            @foreach (Movie movie in Model.OfType<Movie>().ToList())
+            {
+                <tr>
+                    <td valign="top">
+                        <img src="Images/@movie.ImageUrl" alt="@movie.Title" style="width:100px" />
+                    </td>
+                    <td valign="top" style="width:250px">
+                        <div>
+                            <strong>Title:</strong> @movie.Title<br />
+                            <strong>Director:</strong> @movie.Director<br>
+                            <strong>Price:</strong> @String.Format("{0:0.00}", movie.Price) <br />
+                           
+                        </div>
+                    </td>
+                    <td style="vertical-align:bottom;padding-left:50px;">
+                        <div>
+                            <form id="@movie.ProductID" asp-action="AddToCart" asp-controller="Cart" method="post">
+                                <input type="hidden" name="ProductID" value="@movie.ProductID" />
+                                <input type="hidden" name="returnUrl"
+                                       value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                                <span class="card-text p-1">
+                                    <button type="submit"
+                                            class="btn btn-success btn-sm pull-right" style="float:right">
+                                        Add To Cart
+                                    </button>
+                                </span>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+
+            }
+        </table>
+
+</body>
+</html>
